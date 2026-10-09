@@ -1,0 +1,207 @@
+/* ==========================================================
+   Themes for 2048 — loaded after main.css.
+   Classic = no data-theme attribute, so the original look is untouched.
+   Each theme only sets variables; the shared rules below use them.
+   ========================================================== */
+
+/* ---------- Theme dropdown (visible in every theme) ---------- */
+.theme-switcher {
+  margin-bottom: 20px;
+}
+
+.theme-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.theme-select {
+  height: 34px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 3px;
+  background: var(--btn, #8f7a66);
+  color: var(--btn-text, #f9f6f2);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.theme-select:focus-visible {
+  outline: 2px solid var(--text, #776e65);
+  outline-offset: 2px;
+}
+
+.theme-select option {
+  background: var(--bg, #faf8ef);
+  color: var(--text, #776e65);
+}
+
+/* ---------- DARK ---------- */
+html[data-theme="dark"] {
+  --bg: #17171c;
+  --text: #e8e3d9;
+  --board: #2a2a33;
+  --cell: rgba(255, 255, 255, 0.06);
+  --btn: #5b5b75;
+  --btn-text: #ffffff;
+  --label: #b9b9cc;
+  --hr: #3b3b46;
+  --over-bg: rgba(15, 15, 20, 0.82);
+  --won-bg: rgba(130, 100, 20, 0.65);
+
+  --t2-bg: #3a3a47;    --t2-fg: #e8e3d9;
+  --t4-bg: #464659;    --t4-fg: #e8e3d9;
+  --t8-bg: #c9742f;    --t8-fg: #ffffff;
+  --t16-bg: #c9582b;   --t16-fg: #ffffff;
+  --t32-bg: #c2412f;   --t32-fg: #ffffff;
+  --t64-bg: #b82d1e;   --t64-fg: #ffffff;
+  --t128-bg: #b89b2c;  --t128-fg: #ffffff;
+  --t256-bg: #b8942a;  --t256-fg: #ffffff;
+  --t512-bg: #b88d1f;  --t512-fg: #ffffff;
+  --t1024-bg: #b8861a; --t1024-fg: #ffffff;
+  --t2048-bg: #d19a0f; --t2048-fg: #ffffff;
+  --tsuper-bg: #000000; --tsuper-fg: #ffffff;
+}
+
+/* ---------- PINK ---------- */
+html[data-theme="pink"] {
+  --bg: #fff0f6;
+  --text: #8a3b5c;
+  --board: #f2a7c3;
+  --cell: rgba(255, 255, 255, 0.45);
+  --btn: #e0488c;
+  --btn-text: #ffffff;
+  --label: #fff0f6;
+  --hr: #f6c4d8;
+  --over-bg: rgba(255, 240, 246, 0.8);
+  --won-bg: rgba(255, 105, 180, 0.5);
+
+  --t2-bg: #ffe3ee;    --t2-fg: #8a3b5c;
+  --t4-bg: #ffd2e4;    --t4-fg: #8a3b5c;
+  --t8-bg: #ffb0d0;    --t8-fg: #ffffff;
+  --t16-bg: #ff93bf;   --t16-fg: #ffffff;
+  --t32-bg: #ff72ac;   --t32-fg: #ffffff;
+  --t64-bg: #f4529b;   --t64-fg: #ffffff;
+  --t128-bg: #e45ab0;  --t128-fg: #ffffff;
+  --t256-bg: #d04bbb;  --t256-fg: #ffffff;
+  --t512-bg: #b940c4;  --t512-fg: #ffffff;
+  --t1024-bg: #9f35c6; --t1024-fg: #ffffff;
+  --t2048-bg: #8329c4; --t2048-fg: #ffffff;
+  --tsuper-bg: #4f1768; --tsuper-fg: #ffffff;
+}
+
+/* ---------- NEON ---------- */
+html[data-theme="neon"] {
+  --bg: #07070f;
+  --text: #00f0ff;
+  --board: #11111f;
+  --cell: rgba(0, 240, 255, 0.07);
+  --btn: #07070f;
+  --btn-text: #ff2bd6;
+  --label: #7f8cff;
+  --hr: #2a2a55;
+  --over-bg: rgba(7, 7, 15, 0.85);
+  --won-bg: rgba(0, 255, 163, 0.25);
+
+  /* Tiles are dark; the number color is the glow color */
+  --t2-bg: #0d0d1a;    --t2-fg: #00f0ff;
+  --t4-bg: #0d0d1a;    --t4-fg: #39ff14;
+  --t8-bg: #0d0d1a;    --t8-fg: #ff2bd6;
+  --t16-bg: #0d0d1a;   --t16-fg: #ffe600;
+  --t32-bg: #0d0d1a;   --t32-fg: #ff7a00;
+  --t64-bg: #0d0d1a;   --t64-fg: #ff3355;
+  --t128-bg: #0d0d1a;  --t128-fg: #b967ff;
+  --t256-bg: #0d0d1a;  --t256-fg: #00ffa3;
+  --t512-bg: #0d0d1a;  --t512-fg: #1fb6ff;
+  --t1024-bg: #0d0d1a; --t1024-fg: #ff5ec4;
+  --t2048-bg: #0d0d1a; --t2048-fg: #ffffff;
+  --tsuper-bg: #0d0d1a; --tsuper-fg: #ffffff;
+}
+
+/* ---------- Shared rules (only active when a theme is chosen) ---------- */
+/* main.css also colors <html> cream, and the body's 80px margin shows that color,
+   so the theme background has to be set on both html and body */
+html[data-theme],
+html[data-theme] body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+html[data-theme] a,
+html[data-theme] h1.title,
+html[data-theme] .game-message p {
+  color: var(--text);
+}
+
+html[data-theme] hr {
+  border-bottom-color: var(--hr);
+}
+
+html[data-theme] .game-container {
+  background: var(--board);
+}
+
+html[data-theme] .grid-cell {
+  background: var(--cell);
+}
+
+html[data-theme] .score-container,
+html[data-theme] .best-container {
+  background: var(--board);
+  color: var(--text);
+}
+
+html[data-theme] .score-container:after,
+html[data-theme] .best-container:after {
+  color: var(--label);
+}
+
+html[data-theme] .restart-button,
+html[data-theme] .retry-button,
+html[data-theme] .keep-playing-button {
+  background: var(--btn);
+  color: var(--btn-text);
+}
+
+html[data-theme] .game-message.game-over { background: var(--over-bg); }
+html[data-theme] .game-message.game-won  { background: var(--won-bg); }
+
+/* Tile colors */
+html[data-theme] .tile.tile-2 .tile-inner    { background: var(--t2-bg);    color: var(--t2-fg); }
+html[data-theme] .tile.tile-4 .tile-inner    { background: var(--t4-bg);    color: var(--t4-fg); }
+html[data-theme] .tile.tile-8 .tile-inner    { background: var(--t8-bg);    color: var(--t8-fg); }
+html[data-theme] .tile.tile-16 .tile-inner   { background: var(--t16-bg);   color: var(--t16-fg); }
+html[data-theme] .tile.tile-32 .tile-inner   { background: var(--t32-bg);   color: var(--t32-fg); }
+html[data-theme] .tile.tile-64 .tile-inner   { background: var(--t64-bg);   color: var(--t64-fg); }
+html[data-theme] .tile.tile-128 .tile-inner  { background: var(--t128-bg);  color: var(--t128-fg); }
+html[data-theme] .tile.tile-256 .tile-inner  { background: var(--t256-bg);  color: var(--t256-fg); }
+html[data-theme] .tile.tile-512 .tile-inner  { background: var(--t512-bg);  color: var(--t512-fg); }
+html[data-theme] .tile.tile-1024 .tile-inner { background: var(--t1024-bg); color: var(--t1024-fg); }
+html[data-theme] .tile.tile-2048 .tile-inner { background: var(--t2048-bg); color: var(--t2048-fg); }
+html[data-theme] .tile.tile-super .tile-inner { background: var(--tsuper-bg); color: var(--tsuper-fg); }
+
+/* ---------- Neon extras: glowing outlines ---------- */
+html[data-theme="neon"] h1.title {
+  text-shadow: 0 0 6px #00f0ff, 0 0 18px #00f0ff;
+}
+
+html[data-theme="neon"] .game-container {
+  box-shadow: 0 0 0 2px #ff2bd6, 0 0 24px rgba(255, 43, 214, 0.55);
+}
+
+html[data-theme="neon"] .tile .tile-inner {
+  text-shadow: 0 0 8px currentColor;
+  box-shadow: 0 0 0 2px currentColor, 0 0 14px currentColor, inset 0 0 10px rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="neon"] .restart-button,
+html[data-theme="neon"] .retry-button,
+html[data-theme="neon"] .keep-playing-button,
+html[data-theme="neon"] .theme-select {
+  box-shadow: 0 0 0 2px #ff2bd6, 0 0 12px rgba(255, 43, 214, 0.6);
+  text-shadow: 0 0 6px #ff2bd6;
+}

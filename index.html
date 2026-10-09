@@ -5,6 +5,16 @@
   <title>2048</title>
 
   <link href="style/main.css" rel="stylesheet" type="text/css">
+  <link href="style/themes.css" rel="stylesheet" type="text/css">
+  <script>
+    // Apply the saved theme immediately so the page does not flash the classic colors
+    try {
+      var savedTheme = localStorage.getItem("theme");
+      if (savedTheme && savedTheme !== "classic") {
+        document.documentElement.setAttribute("data-theme", savedTheme);
+      }
+    } catch (e) {}
+  </script>
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
   <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
@@ -24,6 +34,17 @@
         <div class="score-container">0</div>
         <div class="best-container">0</div>
       </div>
+    </div>
+
+    <div class="theme-switcher">
+      <label class="theme-picker">Theme
+        <select id="theme-select" class="theme-select">
+          <option value="classic">Classic</option>
+          <option value="dark">Dark</option>
+          <option value="pink">Pink</option>
+          <option value="neon">Neon</option>
+        </select>
+      </label>
     </div>
 
     <div class="above-game">
@@ -95,5 +116,6 @@
   <script src="js/local_storage_manager.js"></script>
   <script src="js/game_manager.js"></script>
   <script src="js/application.js"></script>
+  <script src="js/theme_switcher.js"></script>
 </body>
 </html>
